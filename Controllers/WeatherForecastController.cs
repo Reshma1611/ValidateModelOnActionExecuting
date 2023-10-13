@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace ValidateModelOnActionExecuting.Controllers
 {
     [ApiController]
+    [InvalidModelStateHandler]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : BaseController
     {
         private static readonly string[] Summaries = new[]
         {
@@ -29,5 +30,12 @@ namespace ValidateModelOnActionExecuting.Controllers
             })
             .ToArray();
         }
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]User model)
+        {
+            return Ok();
+        }
+
+
     }
 }

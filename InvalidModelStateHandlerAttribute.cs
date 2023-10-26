@@ -18,7 +18,9 @@ namespace ValidateModelOnActionExecuting
                     )).ToArray();
                 var resData = new ResponseData<FieldError[]>()
                 {
-                    Data = data
+                    Status = (int)HttpStatusCode.BadRequest,
+                    Data = data,
+                    Message = "Model error"
                 };
                 context.Result = new JsonResult(resData)
                 {
